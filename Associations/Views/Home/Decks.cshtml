@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Decks";
+}
+
+<div class="page-header">
+    <h1>Decks Service</h1>
+</div>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default" id="bill">
+            <div class="panel-heading">
+                <h2 class="panel-title">Decks</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: deck">
+                    <li>
+                        <strong><span data-bind="text: Id"></span><span data-bind="text: DeckName"></span></strong>
+                        <small><a href="#" data-bind="click: $parent.getDeckDetail">Details</a></small>
+                        @*<small>|<a href="#" data-bind="click: $parent.updateCard"> Update</a></small>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="visible: error"></p></div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail</h2>
+            </div>
+            <!-- ko if:deckDetail() -->
+            <table class="table">
+
+                <tr><td>DeckName</td><td data-bind="text: deckDetail().DeckName"></td></tr>
+
+            </table>
+            <!-- /ko -->
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Add Deck</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="submit: addDeck">
+                    <div class="form-group" data-bind="with: newDeck">
+                        <label for="inputAuthor" class="col-sm-2 control-label">Deck Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTitle" data-bind="value:DeckName" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/knockoutjs-file-binding.js"></script>
+<script src="~/Scripts/app-deck.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+

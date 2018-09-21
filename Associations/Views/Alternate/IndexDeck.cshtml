@@ -1,0 +1,210 @@
+﻿@*@model IEnumerable<Associations.Models.Card>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeckId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecificSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fileInput)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeckId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CardNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecificSubject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fileInput)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+
+        </td>
+    </tr>
+}
+
+</table>*@
+
+
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="page-header">
+    <h1>Cards Service</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default" id="bill">
+            <div class="panel-heading">
+                <h2 class="panel-title">Cards</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: Cards">
+
+                    <li tyle="border: solid" data-bind="click: $root.getselectedcard" id="updtr">
+                        <strong><span data-bind="text: Id"></span><span data-bind="text: Category"></span></strong>: <span data-bind="text: fileInput"></span>: <span data-bind="text: CardNumber"></span>
+                        <small>|<a href="#" data-bind="click: $root.deleterec"> Delete</a></small>
+                        @*<small>|<a href="#" data-bind="click: $parent.updateCard"> Update</a></small>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default" id="bill">
+            <div class="panel-heading">
+                <h2 class="panel-title">Card<span class="text-right" data-bind="text: $root.CardNumber"></span></h2>
+            </div>
+            <div class="row" data-bind="if: $root.Id">
+                <div class="col-lg-12"><img width="100%" height="auto" data-bind="attr:{src: $root.fileInput}" /></div>
+                <div class="col-lg-2">Facts:</div><div class="col-lg-10" data-bind="text: $root.Facts"></div>
+                <div class="col-lg-2">Question:</div><div class="col-lg-10" data-bind="text: $root.Question"></div>
+                <div class="col-lg-2">Answer:</div><div class="col-lg-10" data-bind="text: $root.Answer"></div>
+            </div>
+            <div class="row" data-bind="ifnot: $root.Id">
+                <div class="col-lg-12 text-center"><b>Select a card from the left column to edit</b></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4" id="create-card">
+        <label for="inputSubject" class="col-sm-2 control-label">Id</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Id" disabled="disabled" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">DeckId</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.DeckId" disabled="disabled" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Color</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value:$root.Color" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Category</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Category" disabled="disabled" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Card#</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.CardNumber" disabled="disabled" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Subject</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Subject" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Specific</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.SpecificSubject" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Author</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Author" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Facts</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Facts" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Question</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Question" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Answer</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGenre" data-bind="value: $root.Answer" />
+        </div>
+        <label for="inputSubject" class="col-sm-2 control-label">Image</label>
+
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="inputGenre" data-bind="file: $root.fileInput" />
+        </div>
+
+        <label for="inputSubject" class="col-sm-2 control-label">&nbsp;</label>
+        <div class="col-sm-10" style="margin-top:10px;">
+            <button data-bind="click: $root.update" class="btn btn-primary btn-lg">Update</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/knockoutjs-file-binding.js"></script>
+<script src="~/Scripts/app-alter.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

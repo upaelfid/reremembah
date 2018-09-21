@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+ @media print {
+    div { font-size: 10pt; border:1px solid black; }
+  }
+ .panel-title span {float:right;border:1px solid white; padding:0 3px; border-radius:10px;}
+ #create-card button{width:100%;}
+   .card {
+        width: auto;
+        height: 470px;
+        margin: 20px;
+
+        color:#fff;
+      }
+   .card img{height:auto; width:auto;}
+      .front, .back {
+        border: 2px gray solid;
+        padding: 10px;
+      }
+      .front {
+        background-color: #3498DB;
+      }
+      .back {
+        background-color: #E74C3C;
+      }
+
